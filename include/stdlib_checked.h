@@ -26,24 +26,40 @@
 #pragma CHECKED_SCOPE on
 
 double atof(const char *s : itype(_Nt_array_ptr<const char>));
+double t_atof(_TNt_array_ptr<const char>);
+
 int atoi(const char *s : itype(_Nt_array_ptr<const char>));
+int t_atoi(_TNt_array_ptr<const char>);
+
 long int atol(const char *s : itype(_Nt_array_ptr<const char>));
+long int t_atol(_TNt_array_ptr<const char>);
+
 long long int atoll(const char *s : itype(_Nt_array_ptr<const char>));
+long long int t_atoll(_TNt_array_ptr<const char>);
 
 double strtod(const char * restrict nptr :
                 itype(restrict _Nt_array_ptr<const char>),
               char ** restrict endptr :
                 itype(restrict _Ptr<_Nt_array_ptr<char>>));
 
+double t_strtod(restrict _TNt_array_ptr<const char>,
+                restrict _TPtr<_TNt_array_ptr<char>>);
+
 float strtof(const char * restrict nptr :
                itype(restrict _Nt_array_ptr<const char>),
              char ** restrict endptr :
                 itype(restrict _Ptr<_Nt_array_ptr<char>>));
 
+float t_strtof(restrict _TNt_array_ptr<const char>,
+             restrict _TPtr<_TNt_array_ptr<char>>);
+
 long double strtold(const char * restrict nptr :
                       itype(restrict _Nt_array_ptr<const char>),
                     char ** restrict endptr :
                        itype(restrict _Ptr<_Nt_array_ptr<char>>));
+
+long double t_strtold(restrict _TNt_array_ptr<const char>,
+                    restrict _TPtr<_TNt_array_ptr<char>>);
 
 long int strtol(const char * restrict nptr :
                   itype(restrict _Nt_array_ptr<const char>),
@@ -51,10 +67,20 @@ long int strtol(const char * restrict nptr :
                   itype(restrict _Ptr<_Nt_array_ptr<char>>),
                 int base);
 
+long int t_strtol(restrict _TNt_array_ptr<const char>,
+                  restrict _Ptr<_TNt_array_ptr<char>>,
+                  int base);
+
 long long int strtoll(const char * restrict nptr :
                         itype(restrict _Nt_array_ptr<const char>),
                       char ** restrict endptr :
                         itype(restrict _Ptr<_Nt_array_ptr<char>>),
+                      int base);
+
+long long int t_strtoll(const char * restrict nptr :
+                        itype(restrict _TNt_array_ptr<const char>),
+                      char ** restrict endptr :
+                        itype(restrict _TPtr<_TNt_array_ptr<char>>),
                       int base);
 
 unsigned long int strtoul(const char * restrict nptr :
@@ -63,10 +89,18 @@ unsigned long int strtoul(const char * restrict nptr :
                             itype(restrict _Ptr<_Nt_array_ptr<char>>),
                           int base);
 
+unsigned long int t_strtoul(restrict _TNt_array_ptr<const char>,
+                            restrict _TPtr<_TNt_array_ptr<char>>,
+                            int base);
+
 unsigned long long int strtoull(const char * restrict nptr :
                                   itype(restrict _Nt_array_ptr<const char>),
                                 char ** restrict endptr:
                                    itype(restrict _Ptr<_Nt_array_ptr<char>>),
+                                int base);
+
+unsigned long long int t_strtoull(restrict _TNt_array_ptr<const char>,
+                                  restrict _TPtr<_TNt_array_ptr<char>>,
                                 int base);
 
 // TODO: express alignment constraints once where clauses have been added.
@@ -135,9 +169,14 @@ size_t mbstowcs(wchar_t * restrict pwcs : count(n),
                   itype(restrict _Nt_array_ptr<const char>),
                 size_t n);
 
-size_t t_mbstowcs(restrict _TArray<wchar_t> pwcs : count(n),
+size_t t_mbstowcs(restrict _TArray_ptr<wchar_t> pwcs : count(n),
                   restrict _Nt_array_ptr<const char>,
                   size_t n);
+
+size_t wcstombs(char * restrict output : count(n),
+                const wchar_t * restrict pwcs :
+                  itype(restrict _Nt_array_ptr<const wchar_t>),
+	         size_t n);
 
 size_t t_wcstombs(restrict _TArray_ptr<char> output : count(n),
                 restrict _TNt_array_ptr<const wchar_t>,
