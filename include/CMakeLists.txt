@@ -24,6 +24,7 @@ set(files
   stdio_checked.h
   stdio.h
   stdlib_checked.h
+  stdlib_tainted.h
   stdlib.h
   string_checked.h
   string.h
