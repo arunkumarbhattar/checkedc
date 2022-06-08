@@ -14,19 +14,14 @@
 
 #include <stddef.h>
 static void* c_malloc(char* pointer_name, size_t size);
-
 static void* c_realloc(char* pointer_name, size_t size);
-
 static void c_free(char* pointer_name);
-
-int c_isTaintedPointerToTaintedMem(_TPtr<int> pointer);
-int c_isPointerToTaintedMem(void* pointer);
-void* c_fetch_sandbox_address();
-unsigned int c_fetch_pointer_offset(char* pointer_name);
-void c_update_pointer_offset(char *pointer_name, unsigned long offset);
-bool c_isTaintedPointerToTaintedMem(void* pointer);
-
-unsigned long c_fetch_sandbox_heap_address();
+static int c_isTaintedPointerToTaintedMem(_TPtr<int> pointer);
+static int c_isPointerToTaintedMem(void* pointer);
+static void* c_fetch_sandbox_address();
+static unsigned int c_fetch_pointer_offset(char* pointer_name);
+static void c_update_pointer_offset(char *pointer_name, unsigned long offset);
+static unsigned long c_fetch_sandbox_heap_address();
 
 // TODO: express alignment constraints once where clauses have been added.
 _Itype_for_any(T) _TArray_ptr<T> t_malloc(size_t size, char* assignment_name)
