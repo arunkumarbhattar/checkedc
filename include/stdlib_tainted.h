@@ -13,31 +13,31 @@
 
 
 #include <stddef.h>
-static void* c_malloc(char* pointer_name, size_t size);
-static void* c_realloc(char* pointer_name, size_t size);
-static void c_free(char* pointer_name);
-static int c_isTaintedPointerToTaintedMem(_TPtr<int> pointer);
+static void* c_malloc(size_t size);
+static void* c_realloc(_TArray_ptr<void> pointer, size_t size);
+static void c_free(_TArray_ptr<void>pointer);
+static int c_isTaintedPointerToTaintedMem(_TArray_ptr<void> pointer);
 static int c_isPointerToTaintedMem(void* pointer);
 static void* c_fetch_sandbox_address();
-static unsigned int c_fetch_pointer_offset(char* pointer_name);
-static void c_update_pointer_offset(char *pointer_name, unsigned long offset);
+static unsigned int c_fetch_pointer_offset(_TArray_ptr<void> pointer_name);
+static unsigned int c_fetch_pointer_from_offset(unsigned long pointer_offset);
 static unsigned long c_fetch_sandbox_heap_address();
 
 // TODO: express alignment constraints once where clauses have been added.
-_Itype_for_any(T) _TArray_ptr<T> t_malloc(size_t size, char* assignment_name)
+_Itype_for_any(T) _TArray_ptr<T> t_malloc(size_t size)
 {
-        void* temp = (void*)c_malloc(assignment_name, size);
+        void* temp = (void*)c_malloc(size);
         return (_TArray_ptr<T>) temp;
 };
 
-_Itype_for_any(T) void t_free(char* assignment_name)
+_Itype_for_any(T) void t_free(_TArray_ptr<T> pointer)
 {
-      return c_free(assignment_name);
+      return c_free(pointer);
 };
 
-_Itype_for_any(T) _TArray_ptr<T> t_realloc(size_t size, char* assignment_name)
+_Itype_for_any(T) _TArray_ptr<T> t_realloc(_TArray_ptr<T> pointer, size_t size)
 {
-  return (_TArray_ptr<T>)c_realloc(assignment_name, size);
+  return (_TArray_ptr<T>)c_realloc(pointer, size);
 };
 
 
