@@ -107,7 +107,7 @@ int t_sscanf(_TNt_array_ptr<const char> restrict s,
 // definition of _Nt types. Additional declaration for arrays 
 // available in checkedc_extensions.h
 _Unchecked
-int snprintf(_TNt_array_ptr<char> restrict s : count(n-1),
+int t_snprintf(_TNt_array_ptr<char> restrict s : count(n-1),
              size_t n _Where n > 0,
              _TNt_array_ptr<const char> restrict format, ...);
 #endif

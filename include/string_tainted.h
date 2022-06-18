@@ -98,7 +98,7 @@ _TArray_ptr<char> t_strcat(_TArray_ptr<char> restrict dest,
 
 #if _FORTIFY_SOURCE == 0 || !defined(t_strncat)
 #undef t_strncat
-_TArray_ptr<char> strncat(_TArray_ptr<char> restrict dest,
+_TArray_ptr<char> t_strncat(_TArray_ptr<char> restrict dest,
                           _TArray_ptr<const char> restrict src : count(n),
               size_t n);
 #endif
@@ -130,27 +130,27 @@ size_t t_strxfrm(_TArray_ptr<char> restrict dest : count(n),
 _Itype_for_any(T) _TArray_ptr<T> t_memchr(_TArray_ptr<T> s : byte_count(n), int c, size_t n) :
   byte_count(n);
 
-_TNt_array_ptr<char> strchr(_TNt_array_ptr<const char> s, int c);
+_TNt_array_ptr<char> t_strchr(_TNt_array_ptr<const char> s, int c);
 
 size_t strcspn(_TNt_array_ptr<const char> s1,
                _TNt_array_ptr<const char> s2);
 
-_TNt_array_ptr<char> strpbrk(_TNt_array_ptr<const char> s1,
+_TNt_array_ptr<char> t_strpbrk(_TNt_array_ptr<const char> s1,
                               _TNt_array_ptr<const char> s2);
 
-_TNt_array_ptr<char> strrchr(_TNt_array_ptr<const char> s, int c);
-size_t strspn(_TNt_array_ptr<const char> s1,
+_TNt_array_ptr<char> t_strrchr(_TNt_array_ptr<const char> s, int c);
+size_t t_strspn(_TNt_array_ptr<const char> s1,
               _TNt_array_ptr<const char> s2);
 
-_TNt_array_ptr<char> strstr(_TNt_array_ptr<const char>s1,
+_TNt_array_ptr<char> t_strstr(_TNt_array_ptr<const char>s1,
                              _TNt_array_ptr<const char> s2);
-_TNt_array_ptr<char> strtok(_TNt_array_ptr<char> restrict s1,
+_TNt_array_ptr<char> t_strtok(_TNt_array_ptr<char> restrict s1,
                            _TNt_array_ptr<const char> s2);
 
-_TNt_array_ptr<char> strerror(int errnum);
+_TNt_array_ptr<char> t_strerror(int errnum);
 size_t strlen(_TNt_array_ptr<const char> s);
 
-_TNt_array_ptr<char> strdup(_TNt_array_ptr<const char> s);
+_TNt_array_ptr<char> t_strdup(_TNt_array_ptr<const char> s);
 
 #include "_builtin_string_tainted.h"
 

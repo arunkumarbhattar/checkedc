@@ -22,7 +22,7 @@
 #define __INET_TAINTED_H
 
 
-extern in_addr_t inet_addr (_TNt_array_ptr<const char>) __THROW;
+extern in_addr_t t_inet_addr (_TNt_array_ptr<const char>) __THROW;
 
 
 #endif // guard

@@ -60,21 +60,21 @@ int t_mtx_init(_TPtr<mtx_t> mutex, int type);
 int t_mtx_lock(_TPtr<mtx_t> mutex);
 int t_mtx_timedlock(_TPtr<mtx_t> restrict mutex,
                   _TPtr<const struct timespec> restrict ts);
-int mtx_trylock(_TPtr<mtx_t> mtex);
-int mtx_unlock(_TPtr<mtx_t> mtex);
+int t_mtx_trylock(_TPtr<mtx_t> mtex);
+int t_mtx_unlock(_TPtr<mtx_t> mtex);
 
-int thrd_create(_TPtr<thrd_t> thr,
+int t_thrd_create(_TPtr<thrd_t> thr,
                 _TPtr<int (_TPtr<void>)> func,
                 _TPtr<void> arg);
 
-int thrd_join(thrd_t thr, _TPtr<int> res);
-int thrd_sleep(_TPtr<const struct timespec> duration,
+int t_thrd_join(thrd_t thr, _TPtr<int> res);
+int t_thrd_sleep(_TPtr<const struct timespec> duration,
                _TPtr<struct timespec> remaining);
-int tss_create(_TPtr<tss_t> key,
+int t_tss_create(_TPtr<tss_t> key,
                _TPtr<void (_TPtr<void>)> dtor);
 
-_TPtr<void> tss_get(tss_t key);
-int tss_set(tss_t key, _TPtr<void> value);
+_TPtr<void> t_tss_get(tss_t key);
+int t_tss_set(tss_t key, _TPtr<void> value);
 
 #pragma CHECKED_SCOPE pop
 

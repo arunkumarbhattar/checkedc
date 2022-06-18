@@ -43,8 +43,8 @@ _Itype_for_any(T) extern ssize_t t_write (int __fd, _TArray_ptr<const T> __buf :
 #else
 
 extern int access (_Nt_array_ptr<const char> __name, int __type) __THROW __nonnull ((1));
-_Itype_for_any(T) extern ssize_t read (int __fd, _TArray_ptr<T> __buf : byte_count(__nbytes), size_t __nbytes) __wur;
-_Itype_for_any(T) extern ssize_t write (int __fd, _TArray_ptr<const T> __buf : byte_count(__n), size_t __n) __wur;
+_Itype_for_any(T) extern ssize_t t_read (int __fd, _TArray_ptr<T> __buf : byte_count(__nbytes), size_t __nbytes) __wur;
+_Itype_for_any(T) extern ssize_t t_write (int __fd, _TArray_ptr<const T> __buf : byte_count(__n), size_t __n) __wur;
 
 #endif
 #endif

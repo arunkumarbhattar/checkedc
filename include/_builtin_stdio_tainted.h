@@ -22,13 +22,13 @@
 
 #if __has_builtin(__builtin___sprintf_chkcbx) || defined(__GNUC__)
 // sprintf
-int __sprintf_chkcbx(  _TNt_array_ptr<char> restrict buffer,
+int __t_sprintf_chkcbx(  _TNt_array_ptr<char> restrict buffer,
                   int flag,
                   size_t obj_size,
                     _TNt_array_ptr<const char> restrict format,
                   ...);
 
-int __builtin___sprintf_chkcbx( _TNt_array_ptr<char> restrict buffer,
+int __t_builtin___sprintf_chkcbx( _TNt_array_ptr<char> restrict buffer,
                             int flag,
                             size_t obj_size,
                             restrict _TNt_array_ptr<const char> format,
@@ -37,14 +37,14 @@ int __builtin___sprintf_chkcbx( _TNt_array_ptr<char> restrict buffer,
 
 #if __has_builtin(__builtin___snprintf_chkcbx) || defined(__GNUC__)
 // snprintf
-int __snprintf_chkcbx(_TNt_array_ptr<char> restrict buffer : count(maxlen),
+int __t_snprintf_chkcbx(_TNt_array_ptr<char> restrict buffer : count(maxlen),
                    size_t maxlen,
                    int flag,
                    size_t obj_size,
                    _TNt_array_ptr<const char> restrict format,
                    ...);
 
-int __builtin___snprintf_chkcbx(_TNt_array_ptr<char> restrict buffer : count(maxlen),
+int __t_builtin___snprintf_chkcbx(_TNt_array_ptr<char> restrict buffer : count(maxlen),
                              size_t maxlen,
                              int flag,
                              size_t obj_size,
@@ -55,7 +55,7 @@ int __builtin___snprintf_chkcbx(_TNt_array_ptr<char> restrict buffer : count(max
 #if __has_builtin(__builtin___vsprintf_chkcbx) || defined(__GNUC__)
 // vsprintf
 
-int __vsprintf_chkcbx(_TNt_array_ptr<char> restrict buffer,
+int __t_vsprintf_chkcbx(_TNt_array_ptr<char> restrict buffer,
                    int flag,
                    size_t obj_size,
                    restrict _TNt_array_ptr<const char> restrict format,
@@ -63,7 +63,7 @@ int __vsprintf_chkcbx(_TNt_array_ptr<char> restrict buffer,
 
 
 
-int __builtin___vsprintf_chkcbx(_TNt_array_ptr<char> restrict buffer,
+int __t_builtin___vsprintf_chkcbx(_TNt_array_ptr<char> restrict buffer,
                              int flag,
                              size_t obj_size,
                              _TNt_array_ptr<const char> restrict format,
@@ -73,14 +73,14 @@ int __builtin___vsprintf_chkcbx(_TNt_array_ptr<char> restrict buffer,
 
 #if __has_builtin(__builtin___vsnprintf_chkcbx) || defined(__GNUC__)
 // vsnprintf
-int __vsnprintf_chkcbx(_TNt_array_ptr<char> restrict buffer : count(maxlen),
+int __t_vsnprintf_chkcbx(_TNt_array_ptr<char> restrict buffer : count(maxlen),
                     size_t maxlen,
                     int flag,
                     size_t obj_size,
                     _TNt_array_ptr<const char> restrict format,
                     va_list);
 
-int __builtin___vsnprintf_chkcbx(_TNt_array_ptr<char> restrict buffer : count(maxlen),
+int __t_builtin___vsnprintf_chkcbx(_TNt_array_ptr<char> restrict buffer : count(maxlen),
                               size_t maxlen,
                               int flag,
                               size_t obj_size,
@@ -90,12 +90,12 @@ int __builtin___vsnprintf_chkcbx(_TNt_array_ptr<char> restrict buffer : count(ma
 
 #if __has_builtin(__builtin___fprintf_chkcbx) || defined(__GNUC__)
 // fprintf
-int __fprintf_chkcbx(_Ptr<FILE> restrict stream,
+int __t_fprintf_chkcbx(_Ptr<FILE> restrict stream,
                   int flag,
                   _TNt_array_ptr<const char> restrict format,
                   ...);
 
-int __builtin___fprintf_chkcbx(_Ptr<FILE> restrict stream,
+int __t_builtin___fprintf_chkcbx(_Ptr<FILE> restrict stream,
                             int flag,
                             _TNt_array_ptr<const char> restrict format,
                             ...);
@@ -103,24 +103,24 @@ int __builtin___fprintf_chkcbx(_Ptr<FILE> restrict stream,
 
 #if __has_builtin(__builtin___printf_chkcbx) || defined(__GNUC__)
 // printf
-int __printf_chkcbx(int flag,
+int __t_printf_chkcbx(int flag,
                     _TNt_array_ptr<const char> restrict format,
                  ...);
 
 _Unchecked
-int __builtin___printf_chkcbx(int flag,
+int __t_builtin___printf_chkcbx(int flag,
                               _TNt_array_ptr<const char> restrict format,
                            ...);
 #endif
 
 #if __has_builtin(__builtin___vfprintf_chkcbx) || defined(__GNUC__)
 // vfprintf
-int __vfprintf_chkcbx(_TPtr<FILE> restrict stream,
+int __t_vfprintf_chkcbx(_TPtr<FILE> restrict stream,
                    int flag,
                    _TNt_array_ptr<const char> restrict format,
                    va_list);
 
-int __builtin___vfprintf_chkcbx(_TPtr<FILE> restrict stream,
+int __t_builtin___vfprintf_chkcbx(_TPtr<FILE> restrict stream,
                              int flag,
                              _TNt_array_ptr<const char> restrict format,
                              va_list);
@@ -128,11 +128,11 @@ int __builtin___vfprintf_chkcbx(_TPtr<FILE> restrict stream,
 
 #if __has_builtin(__builtin___vprintf_chkcbx) || defined(__GNUC__)
 // vprintf
-int __vprintf_chk(int flag,
+int __t_vprintf_chk(int flag,
                   _TNt_array_ptr<const char> restrict format,
                   va_list);
 
-int __builtin___vprintf_chk(int flag,
+int __t_builtin___vprintf_chk(int flag,
                             _TNt_array_ptr<const char> restrict format,
                             va_list);
 #endif
