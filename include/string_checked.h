@@ -79,6 +79,7 @@ void *memmove(void * dest : byte_count(n),
 void *memset(void * dest : byte_count(n),
              int c,
              size_t n) : bounds(dest, (_Array_ptr<char>)dest + n);
+
 #endif
 
 #if _FORTIFY_SOURCE == 0 || !defined(strcpy)

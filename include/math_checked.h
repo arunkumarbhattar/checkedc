@@ -24,22 +24,22 @@
 #pragma CHECKED_SCOPE push
 #pragma CHECKED_SCOPE on
 
-double frexp(double value, int *exp : itype(_Ptr<int>));
-float frexpf(float value, int *exp : itype(_Ptr<int>));
-long double frexpl(long double value, int *exp : itype(_Ptr<int>));
+double frexp(double value, int *exp : itype(_TPtr<int>));
+float frexpf(float value, int *exp : itype(_TPtr<int>));
+long double frexpl(long double value, int *exp : itype(_TPtr<int>));
 
-double modf(double value, double *iptr : itype(_Ptr<double>));
-float modff(float value, float *iptr : itype(_Ptr<float>));
+double modf(double value, double *iptr : itype(_TPtr<double>));
+float modff(float value, float *iptr : itype(_TPtr<float>));
 long double modfl(long double value,
-                  long double *iptr : itype(_Ptr<long double>));
+                  long double *iptr : itype(_TPtr<long double>));
 
-double remquo(double x, double y, int *quo : itype(_Ptr<int>));
-float remquof(float x, float y, int *quo : itype(_Ptr<int>));
-long double remquol(long double x, long double y, int *quo : itype(_Ptr<int>));
+double remquo(double x, double y, int *quo : itype(_TPtr<int>));
+float remquof(float x, float y, int *quo : itype(_TPtr<int>));
+long double remquol(long double x, long double y, int *quo : itype(_TPtr<int>));
 
-double nan(const char *t : itype(_Nt_array_ptr<const char>));
-float nanf(const char *t : itype(_Nt_array_ptr<const char>));
-long double nanl(const char *t : itype(_Nt_array_ptr<const char>));
+double nan(const char *t : itype(_TNt_array_ptr<const char>));
+float nanf(const char *t : itype(_TNt_array_ptr<const char>));
+long double nanl(const char *t : itype(_TNt_array_ptr<const char>));
 
 #pragma CHECKED_SCOPE pop
 
