@@ -4,11 +4,6 @@
 //                                                                     //
 /////////////////////////////////////////////////////////////////////////
 
-#ifdef __checkcbox
-#pragma CHECKED_SCOPE push
-#pragma CHECKED_SCOPE off
-#endif
-
 #include_next <assert.h>
 #include <stddef.h> // define wchar_t for wcstoimax and wcstoumax
 
@@ -39,7 +34,7 @@ extern void __t_assert(_TNt_array_ptr<const char> msg,
 
 #undef __t_assert_fail
 extern void __t_assert_fail (_TNt_array_ptr<const char> __assertion, _TNt_array_ptr<const char> __file,
-        unsigned int __line, _TNt_checked<const char> __function)
+        unsigned int __line, _TNt_array_ptr<const char> __function)
 __THROW __attribute__ ((__noreturn__));
 
 #endif

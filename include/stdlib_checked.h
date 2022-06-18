@@ -11,7 +11,6 @@
 #pragma CHECKED_SCOPE off
 #endif
 
-#include "stdlib_tainted.h"
 #include_next <stdlib.h>
 #include <stddef.h> // define wchar_t for wcstoimax and wcstoumax
 

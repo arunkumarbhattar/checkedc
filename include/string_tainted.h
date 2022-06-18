@@ -71,7 +71,7 @@ _Itype_for_any(T) _TArray_ptr<T> t_memmove(_TArray_ptr<T> dest : byte_count(n),
 #endif
 
 #if _FORTIFY_SOURCE == 0 || !defined(t_memset)
-#undef memset
+#undef t_memset
 _Itype_for_any(T) _TArray_ptr<T> t_memset(_TArray_ptr<T> dest : byte_count(n),
                                             int c,
                                             size_t n) : byte_count(n);
@@ -79,14 +79,14 @@ _Itype_for_any(T) _TArray_ptr<T> t_memset(_TArray_ptr<T> dest : byte_count(n),
 
 #if _FORTIFY_SOURCE == 0 || !defined(t_strcpy)
 #undef t_strcpy
-_TArray_ptr<char> t_strcpy(_TArray_ptr<char> restrict dest : byte_count(n),
+_TArray_ptr<char> t_strcpy(_TArray_ptr<char> restrict dest,
                _TArray_ptr<const char> restrict src);
 #endif
 
 #if _FORTIFY_SOURCE == 0 || !defined(t_strncpy)
 #undef t_strncpy
 _TArray_ptr<char> t_strncpy(_TArray_ptr<char> dest : byte_count(n),
-                _TArray_ptr<const char> src : byte_count(n),
+                const char* src : itype(_TArray_ptr<const char>) byte_count(n),
               size_t n) : count(n);
 #endif
 

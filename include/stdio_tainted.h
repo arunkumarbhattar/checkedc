@@ -16,10 +16,6 @@
 #include_next <stdio.h>
 
 #ifdef __checkcbox
-#pragma CHECKED_SCOPE pop
-#endif
-
-#ifdef __checkcbox
 #ifndef __STDIO_TAINTED_H
 #define __STDIO_TAINTED_H
 
@@ -38,7 +34,7 @@ extern _TPtr<FILE> t_stderr;
 #endif
 
 int t_remove(_TNt_array_ptr<const char> name);
-int t_rename(_TNt_array_ptr<const char> from),
+int t_rename(_TNt_array_ptr<const char> from,
            _TNt_array_ptr<const char> to);
 _TPtr<FILE> t_tmpfile(void);
 _TNt_array_ptr<char> t_tmpnam(_TNt_array_ptr<char> source);
@@ -51,9 +47,9 @@ _Ptr<FILE> t_freopen(_TNt_array_ptr<const char> restrict filename,
               _Ptr<FILE> restrict stream);
 
 void t_setbuf(_TPtr<FILE> restrict stream,
-              _TPtr<char> restrict buf : count(BUFSIZ));
-int t_setvbuf(_TPtr<FILE> restrict stream),
-              _TPtr<char>  restrict buf : count(size),
+              _TArray_ptr<char> restrict buf : count(BUFSIZ));
+int t_setvbuf(_TPtr<FILE> restrict stream,
+              _TArray_ptr<char> restrict buf : count(size),
             int mode, size_t size);
 
 //
@@ -76,15 +72,18 @@ int t_setvbuf(_TPtr<FILE> restrict stream),
 
 #if _FORTIFY_SOURCE == 0 || !defined(t_fprintf)
 #undef t_fprintf
+_Unchecked
 int t_fprintf(_TPtr<FILE> restrict stream,
               _TNt_array_ptr<const char> restrict format, ...);
 #endif
 
+_Unchecked
 int t_fscanf(_TPtr<FILE> restrict stream,
              _TNt_array_ptr<const char> restrict format, ...);
 
 #if _FORTIFY_SOURCE == 0 || !defined(t_printf)
 #undef t_printf
+_Unchecked
 int t_printf(_TNt_array_ptr<const char> restrict format, ...);
 #endif
 
@@ -92,11 +91,11 @@ int t_scanf(_TNt_array_ptr<const char> restrict format);
 
 #if _FORTIFY_SOURCE == 0 || !defined(t_sprintf)
 #undef t_sprintf
-
+_Unchecked
 int t_sprintf(_TArray_ptr<char> restrict s,
               _TNt_array_ptr<const char> restrict format, ...);
 #endif
-
+_Unchecked
 int t_sscanf(_TNt_array_ptr<const char> restrict s,
              _TNt_array_ptr<const char> restrict format, ...);
 
@@ -107,7 +106,7 @@ int t_sscanf(_TNt_array_ptr<const char> restrict s,
 // and counts that number in n, s only needs count(n-1) per the 
 // definition of _Nt types. Additional declaration for arrays 
 // available in checkedc_extensions.h
-
+_Unchecked
 int snprintf(_TNt_array_ptr<char> restrict s : count(n-1),
              size_t n _Where n > 0,
              _TNt_array_ptr<const char> restrict format, ...);
@@ -115,29 +114,29 @@ int snprintf(_TNt_array_ptr<char> restrict s : count(n-1),
 
 #if _FORTIFY_SOURCE == 0 || !defined(t_vfprintf)
 #undef t_vfprintf
-
+_Unchecked
 int t_vfprintf(_TPtr<FILE> restrict stream,
                _TNt_array_ptr<const char> restrict format,
              va_list arg);
 #endif
-
+_Unchecked
 int t_vfscanf(_TPtr<FILE> restrict stream,
               _TNt_array_ptr<const char> restrict format,
             va_list arg);
 
 #if _FORTIFY_SOURCE == 0 || !defined(t_vprintf)
 #undef t_vprintf
-
+_Unchecked
 int t_vprintf(_TNt_array_ptr<const char> restrict format,
              va_list arg);
 #endif
-
+_Unchecked
 int t_vscanf(_TNt_array_ptr<const char> restrict format,
             va_list arg);
 
 #if _FORTIFY_SOURCE == 0 || !defined(t_vsnprintf)
 #undef t_vsnprintf
-
+_Unchecked
 int t_vsnprintf(_TNt_array_ptr<char> restrict s : count(n), size_t n,
                 _TNt_array_ptr<char> restrict format,
                 va_list arg);
@@ -145,19 +144,19 @@ int t_vsnprintf(_TNt_array_ptr<char> restrict s : count(n), size_t n,
 
 #if _FORTIFY_SOURCE == 0 || !defined(t_vsprintf)
 #undef t_vsprintf
-// The output buffer parameter has an unchecked pointer type becuse it is missing bounds.
+_Unchecked
 int t_vsprintf(_TNt_array_ptr<char> restrict s,
                _TNt_array_ptr<char> restrict format,
                va_list arg);
 #endif
-
+_Unchecked
 int t_vsscanf(_TNt_array_ptr<const char> restrict s,
               _TNt_array_ptr<const char> restrict format,
               va_list arg);
 
 int t_fgetc(_TPtr<FILE> stream);
 int t_fputc(int c, _TPtr<FILE> stream);
-_Ptr<FILE> t_fgets(_TArray_ptr<char> restrict s : count(n), int n,
+_TArray_ptr<char> t_fgets(_TArray_ptr<char> restrict s : count(n), int n,
                    _TPtr<FILE> restrict stream) :
   bounds(s, s + n);
 int t_fputs(_TNt_array_ptr<const char> restrict s,

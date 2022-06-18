@@ -12,7 +12,7 @@
 #endif
 
 #include <stddef.h> // define wchar_t for wcstoimax and wcstoumax
-
+#include <stdint.h>
 #ifdef __checkcbox
 #pragma CHECKED_SCOPE pop
 #endif

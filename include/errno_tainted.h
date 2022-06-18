@@ -22,7 +22,7 @@ __declspec(dllimport) _TPtr<int> __cdecl _errno(void);
 #elif defined(__APPLE__)
 extern _TPtr<int> __errno_location(void);
 #else
-extern _TPtr<int> __errno_location(void) : __THROW __attribute_const__;
+extern _TPtr<int> __errno_location(void)  __THROW __attribute_const__;
 #endif
 
 #pragma CHECKED_SCOPE pop
