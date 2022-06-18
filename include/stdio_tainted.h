@@ -34,7 +34,7 @@ _TPtr<FILE> __cdecl __t_acrt_iob_func(unsigned);
 #else
 extern _TPtr<FILE> t_stdin;
 extern _TPtr<FILE> t_stdout ;
-extern _Ptr<FILE> t_stderr;
+extern _TPtr<FILE> t_stderr;
 #endif
 
 int t_remove(_TNt_array_ptr<const char> name);
@@ -43,7 +43,7 @@ int t_rename(_TNt_array_ptr<const char> from),
 _TPtr<FILE> t_tmpfile(void);
 _TNt_array_ptr<char> t_tmpnam(_TNt_array_ptr<char> source);
 int t_fclose(_TPtr<FILE> stream);
-int t_fflush(_Ptr<FILE> stream);
+int t_fflush(_TPtr<FILE> stream);
 _Ptr<FILE> t_fopen(_TNt_array_ptr<const char> restrict filename,
             _TNt_array_ptr<const char> restrict mode);
 _Ptr<FILE> t_freopen(_TNt_array_ptr<const char> restrict filename,

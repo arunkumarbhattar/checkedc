@@ -6,27 +6,32 @@
 // specification.                                                     //
 ////////////////////////////////////////////////////////////////////////
 
+#ifdef __checkedc
+#pragma CHECKED_SCOPE push
+#pragma CHECKED_SCOPE off
+#endif
+
 #include_next <fenv.h>
 
-#ifdef __checkcbox
+#ifdef __checkedc
 #pragma CHECKED_SCOPE pop
 #endif
 
 #ifdef __checkedc
-#ifndef __FENV_TAINTED_H
-#define __FENV_TAINTED_H
+#ifndef __FENV_CHECKED_H
+#define __FENV_CHECKED_H
 
 #pragma CHECKED_SCOPE push
 #pragma CHECKED_SCOPE on
 
-int t_fesetexceptflag(_TPtr<const fexcept_t> flagp,
+int fesetexceptflag(const fexcept_t *flagp : itype(_Ptr<const fexcept_t>),
                     int excepts);
-int t_fegetenv(_TPtr<fenv_t> envp);
-int t_feholdexcept(_TPtr<fenv_t> envp);
-int t_fesetenv(_TPtr<const fenv_t> envp);
-int t_feupdateenv(_TPtr<const fenv_t> envp);
+int fegetenv(fenv_t *envp : itype(_Ptr<fenv_t>));
+int feholdexcept(fenv_t *envp : itype(_Ptr<fenv_t>));
+int fesetenv(const fenv_t *envp : itype(_Ptr<const fenv_t>));
+int feupdateenv(const fenv_t *envp : itype(_Ptr<const fenv_t>));
 
 #pragma CHECKED_SCOPE pop
 
 #endif // guard
-#endif // Tainted C
+#endif // Checked C

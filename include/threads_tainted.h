@@ -53,28 +53,28 @@ int t_cnd_signal(_TPtr<cnd_t> condition);
 int t_cnd_timedwait(_TPtr<cnd_t> restrict cond,
                   _TPtr<mtx_t> restrict mutex,
                   _TPtr<const struct timespec> restrict spec);
-int t_cnd_wait(_Ptr<cnd_t> condition,
-             _Ptr<mtx_t> mutex);
-void t_mtx_destroy(_Ptr<mtx_t> mutex);
-int t_mtx_init(_Ptr<mtx_t> mutex, int type);
-int t_mtx_lock(_Ptr<mtx_t> mutex);
-int t_mtx_timedlock(_Ptr<mtx_t> restrict mutex,
-                  _Ptr<const struct timespec> restrict ts);
-int mtx_trylock(_Ptr<mtx_t> mtex);
-int mtx_unlock(_Ptr<mtx_t> mtex);
+int t_cnd_wait(_TPtr<cnd_t> condition,
+             _TPtr<mtx_t> mutex);
+void t_mtx_destroy(_TPtr<mtx_t> mutex);
+int t_mtx_init(_TPtr<mtx_t> mutex, int type);
+int t_mtx_lock(_TPtr<mtx_t> mutex);
+int t_mtx_timedlock(_TPtr<mtx_t> restrict mutex,
+                  _TPtr<const struct timespec> restrict ts);
+int mtx_trylock(_TPtr<mtx_t> mtex);
+int mtx_unlock(_TPtr<mtx_t> mtex);
 
-int thrd_create(_Ptr<thrd_t> thr,
-                _Ptr<int (_Ptr<void>)> func,
-                _Ptr<void> arg);
+int thrd_create(_TPtr<thrd_t> thr,
+                _TPtr<int (_TPtr<void>)> func,
+                _TPtr<void> arg);
 
-int thrd_join(thrd_t thr, _Ptr<int> res);
-int thrd_sleep(_Ptr<const struct timespec> duration,
-               _Ptr<struct timespec> remaining);
-int tss_create(_Ptr<tss_t> key,
-               _Ptr<void (void * : itype(_Ptr<void>))> dtor);
+int thrd_join(thrd_t thr, _TPtr<int> res);
+int thrd_sleep(_TPtr<const struct timespec> duration,
+               _TPtr<struct timespec> remaining);
+int tss_create(_TPtr<tss_t> key,
+               _TPtr<void (_TPtr<void>)> dtor);
 
-_Ptr<void> tss_get(tss_t key);
-int tss_set(tss_t key, _Ptr<void> value);
+_TPtr<void> tss_get(tss_t key);
+int tss_set(tss_t key, _TPtr<void> value);
 
 #pragma CHECKED_SCOPE pop
 

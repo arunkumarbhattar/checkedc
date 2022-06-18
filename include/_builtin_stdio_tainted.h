@@ -63,7 +63,7 @@ int __vsprintf_chkcbx(_TNt_array_ptr<char> restrict buffer,
 
 
 
-int __builtin___vsprintf_chkcbx(itype(restrict _TNt_array_ptr<char> restrict buffer,
+int __builtin___vsprintf_chkcbx(_TNt_array_ptr<char> restrict buffer,
                              int flag,
                              size_t obj_size,
                              _TNt_array_ptr<const char> restrict format,
@@ -115,12 +115,12 @@ int __builtin___printf_chkcbx(int flag,
 
 #if __has_builtin(__builtin___vfprintf_chkcbx) || defined(__GNUC__)
 // vfprintf
-int __vfprintf_chkcbx(_Ptr<FILE> restrict stream,
+int __vfprintf_chkcbx(_TPtr<FILE> restrict stream,
                    int flag,
                    _TNt_array_ptr<const char> restrict format,
                    va_list);
 
-int __builtin___vfprintf_chkcbx(_Ptr<FILE> restrict stream,
+int __builtin___vfprintf_chkcbx(_TPtr<FILE> restrict stream,
                              int flag,
                              _TNt_array_ptr<const char> restrict format,
                              va_list);

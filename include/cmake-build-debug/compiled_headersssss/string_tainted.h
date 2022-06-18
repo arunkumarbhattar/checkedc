@@ -14,11 +14,6 @@
 #include_next <string.h>
 
 #ifdef __checkcbox
-#pragma CHECKED_SCOPE pop
-#endif
-
-
-#ifdef __checkcbox
 
 #ifndef __STRING_TAINTED_H
 #define __STRING_TAINTED_H
@@ -37,14 +32,14 @@
 // control when that happens (string.h may already have been included before
 // this file is ever included).
 #if defined(__GNUC__)
-#undef t_strchr
-#undef t_strcmp
-#undef t_strcspn
-#undef t_strncmp
-#undef t_strncmp
-#undef t_strpbrk
-#undef t_strspn
-#undef t_strdup
+#undef strchr
+#undef strcmp
+#undef strcspn
+#undef strncmp
+#undef strncmp
+#undef strpbrk
+#undef strspn
+#undef strdup
 #endif
 
 // We wrap each definition in a complex conditional, there two boolean values:
@@ -58,16 +53,16 @@
 
 #if _FORTIFY_SOURCE == 0 || !defined(t_memcpy)
 #undef t_memcpy
-_Itype_for_any(T) _TArray_ptr<T> t_memcpy(_TArray_ptr<T> restrict dest : byte_count(n),
-             _TArray_ptr<const T> restrict src : byte_count(n),
-             size_t n) : byte_count(n) ;
+_Itype_for_any(T) _TArray_ptr<T> : byte_count(n) t_memcpy(_Array_ptr<T> : byte_count(n) restrict dest,
+             _Array_ptr<const T> : byte_count(n) restrict src,
+             size_t n) ;
 #endif
 
 #if _FORTIFY_SOURCE == 0 || !defined(t_memmove)
 #undef t_memmove
-_Itype_for_any(T) _TArray_ptr<T> t_memmove(_TArray_ptr<T> dest : byte_count(n),
+_Itype_for_any(T) _TArray_ptr<T> t_memmove(_Array_ptr<T> dest : byte_count(n),
                   _TArray_ptr<const T> src : byte_count(n),
-              size_t n) : byte_count(n);
+              size_t n) : count(n);
 #endif
 
 #if _FORTIFY_SOURCE == 0 || !defined(t_memset)

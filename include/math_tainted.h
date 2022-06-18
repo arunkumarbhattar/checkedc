@@ -9,9 +9,9 @@
 
 #include_next <math.h>
 
-#ifdef __checkedc
-#ifndef __MATH_CHECKED_H
-#define __MATH_CHECKED_H
+#ifdef __checkcbox
+#ifndef __MATH_TAINTED_H
+#define __MATH_TAINTED_H
 
 double frexp(double value, _TPtr<int> exp);
 float frexpf(float value, _TPtr<int> exp);

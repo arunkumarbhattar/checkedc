@@ -9,7 +9,7 @@
 #ifndef __SIGNAL_TAINTED_H
 #define __SIGNAL_TAINTED_H
 
-void (_TPtr<void (int)> signal // bounds-safe interface for signal return
+void (_TPtr<void (int)> t_signal // bounds-safe interface for signal return
      )(int);
 
 #endif // guard
