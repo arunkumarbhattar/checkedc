@@ -80,7 +80,7 @@ _Itype_for_any(T) _TArray_ptr<T> t_memset(_TArray_ptr<T> dest : byte_count(n),
 #if _FORTIFY_SOURCE == 0 || !defined(t_strcpy)
 #undef t_strcpy
 _TArray_ptr<char> t_strcpy(_TArray_ptr<char> restrict dest,
-               _TArray_ptr<const char> restrict src);
+               const char* restrict src : itype(restrict _TArray_ptr<const char>));
 #endif
 
 #if _FORTIFY_SOURCE == 0 || !defined(t_strncpy)
