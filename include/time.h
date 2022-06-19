@@ -20,5 +20,4 @@
 
 #else // checkedc && implicit include enabled
 #include <time_checked.h>
-#include <time_tainted.h>
 #endif

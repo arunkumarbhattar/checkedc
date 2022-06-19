@@ -20,5 +20,4 @@
 
 #else // checkedc && implicit include enabled
 #include <assert_checked.h>
-#include <assert_tainted.h>
 #endif

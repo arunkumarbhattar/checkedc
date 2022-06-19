@@ -27,5 +27,4 @@
 
 #else // checkedc && implicit include enabled
 #include <arpa/inet_checked.h>
-#include <arpa/inet_tainted.h>
 #endif

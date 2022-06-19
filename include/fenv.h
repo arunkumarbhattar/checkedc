@@ -20,5 +20,4 @@
 
 #else // checkedc && implicit include enabled
 #include <fenv_checked.h>
-#include <fenv_tainted.h>
 #endif

@@ -9,4 +9,3 @@
 // Ensure that Checked-C-specific declarations are included even if
 // implicit inclusion is disabled.
 #include <inttypes_checked_internal.h>
-#include <inttypes_tainted_internal.h>

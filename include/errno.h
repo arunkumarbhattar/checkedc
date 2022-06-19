@@ -20,5 +20,4 @@
 
 #else // checkedc && implicit include enabled
 #include <errno_checked.h>
-#include <errno_tainted.h>
 #endif

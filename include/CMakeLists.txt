@@ -9,49 +9,34 @@
 
 set(files
   assert_checked.h
-  assert_tainted.h
   assert.h
   errno_checked.h
-  errno_tainted.h
   errno.h
   fenv_checked.h
-  fenv_tainted.h
   fenv.h
   inttypes_checked.h
   inttypes_checked_internal.h
-  inttypes_tainted_internal.h
   math_checked.h
-  math_tainted.h
   math.h
   signal_checked.h
-  signal_tainted.h
   signal.h
   stdchecked.h
   stdio_checked.h
-  stdio_tainted.h
   stdio.h
   stdlib_checked.h
-  stdlib_tainted.h
   stdlib.h
   string_checked.h
-  string_tainted.h
   string.h
   threads_checked.h
-  threads_tainted.h
   threads.h
   time_checked.h
-  time_tainted.h
   time.h
   unistd_checked.h
-  unistd_tainted.h
   unistd.h
   _builtin_stdio_checked.h
-  _builtin_stdio_tainted.h
   _builtin_string_checked.h
-        _builtin_string_tainted.h
   _builtin_common.h
   checkedc_extensions.h
-        checkcbox_extensions.h
   )
 
 set(posix_arpa_files
