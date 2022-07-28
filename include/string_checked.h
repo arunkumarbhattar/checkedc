@@ -62,21 +62,21 @@
 
 #if _FORTIFY_SOURCE == 0 || !defined(memcpy)
 #undef memcpy
-_Itype_for_any(T) void *memcpy(void * restrict dest : itype(restrict _Array_ptr<T>) byte_count(n),
+_TLIB _Itype_for_any(T) void *memcpy(void * restrict dest : itype(restrict _Array_ptr<T>) byte_count(n),
              const void * restrict src : itype(restrict _Array_ptr<const T>) byte_count(n),
              size_t n) : itype(_Array_ptr<T>) byte_count(n);
 #endif
 
 #if _FORTIFY_SOURCE == 0 || !defined(memmove)
 #undef memmove
-void *memmove(void * dest : byte_count(n),
+_TLIB void *memmove(void * dest : byte_count(n),
               const void * src : byte_count(n),
               size_t n) : bounds(dest, (_Array_ptr<char>)dest + n);
 #endif
 
 #if _FORTIFY_SOURCE == 0 || !defined(memset)
 #undef memset
-void *memset(void * dest : byte_count(n),
+_TLIB void *memset(void * dest : byte_count(n),
              int c,
              size_t n) : bounds(dest, (_Array_ptr<char>)dest + n);
 #endif
@@ -85,14 +85,14 @@ void *memset(void * dest : byte_count(n),
 #undef strcpy
 // Dest is left unchecked intentionally. There is no bound on dest, so this
 // is always an unchecked function
-_Unchecked
+_TLIB _Unchecked
 char *strcpy(char * restrict dest,
               const char * restrict src : itype(restrict _Nt_array_ptr<const char>));
 #endif
 
 #if _FORTIFY_SOURCE == 0 || !defined(strncpy)
 #undef strncpy
-char *strncpy(char * restrict dest : count(n),
+_TLIB char *strncpy(char * restrict dest : count(n),
               const char * restrict src : count(n),
               size_t n) : bounds(dest, (_Array_ptr<char>)dest + n);
 #endif
@@ -101,7 +101,7 @@ char *strncpy(char * restrict dest : count(n),
 #undef strcat
 // Dest is left unchecked intentionally. There is no bound on dest, so this
 // is always an unchecked function.
-_Unchecked
+_TLIB _Unchecked
 char *strcat(char * restrict dest,
              const char * restrict src : itype(restrict _Nt_array_ptr<const char>));
 #endif
@@ -110,18 +110,18 @@ char *strcat(char * restrict dest,
 #undef strncat
 // TODO: we have no way to express the bounds requirement on dest,
 // which needs to be count(strlen(dest) + n).
-_Unchecked
+_TLIB _Unchecked
 char *strncat(char * restrict dest,
               const char * restrict src : count(n),
               size_t n);
 #endif
 
-int memcmp(const void *src1 : byte_count(n), const void *src2 : byte_count(n),
+_TLIB int memcmp(const void *src1 : byte_count(n), const void *src2 : byte_count(n),
            size_t n);
 
-int strcmp(const char *src1 : itype(_Nt_array_ptr<const char>),
+_TLIB int strcmp(const char *src1 : itype(_Nt_array_ptr<const char>),
            const char *src2 : itype(_Nt_array_ptr<const char>));
-int strcoll(const char *src1 : itype(_Nt_array_ptr<const char>),
+_TLIB int strcoll(const char *src1 : itype(_Nt_array_ptr<const char>),
             const char *src2 : itype(_Nt_array_ptr<const  char>));
 
 // strncmp takes possibly null-terminated strings as arguments and checks
@@ -131,42 +131,42 @@ int strcoll(const char *src1 : itype(_Nt_array_ptr<const char>),
 // interface for null-terminated strings (assumed to be the most common case).
 // In the checkedc_extensions.h header there is a bounds-safe interface for
 // use of _Array_ptr rather than _Nt_array_ptr.
-int strncmp(const char *src : itype(_Nt_array_ptr<const char>),
+_TLIB int strncmp(const char *src : itype(_Nt_array_ptr<const char>),
             const char *s2 : itype(_Nt_array_ptr<const char>),
             size_t n);
 
-size_t strxfrm(char * restrict dest : count(n),
+_TLIB size_t strxfrm(char * restrict dest : count(n),
                const char * restrict src :
                  itype(restrict _Nt_array_ptr<const char>),
                size_t n);
 
-void *memchr(const void *s : byte_count(n), int c, size_t n) :
+_TLIB void *memchr(const void *s : byte_count(n), int c, size_t n) :
   bounds(s, (_Array_ptr<char>) s + n);
 
-char *strchr(const char *s : itype(_Nt_array_ptr<const char>), int c) :
+_TLIB char *strchr(const char *s : itype(_Nt_array_ptr<const char>), int c) :
   itype(_Nt_array_ptr<char>);
 
-size_t strcspn(const char *s1 : itype(_Nt_array_ptr<const char>),
+_TLIB size_t strcspn(const char *s1 : itype(_Nt_array_ptr<const char>),
                const char *s2 : itype(_Nt_array_ptr<const char>));
 
-char *strpbrk(const char *s1 : itype(_Nt_array_ptr<const char>),
+_TLIB char *strpbrk(const char *s1 : itype(_Nt_array_ptr<const char>),
               const char *s2 : itype(_Nt_array_ptr<const char>)) :
   itype(_Nt_array_ptr<char>);
-char *strrchr(const char *s : itype(_Nt_array_ptr<const char>), int c) :
+_TLIB char *strrchr(const char *s : itype(_Nt_array_ptr<const char>), int c) :
   itype(_Nt_array_ptr<char>);
 size_t strspn(const char *s1 : itype(_Nt_array_ptr<const char>),
               const char *s2 : itype(_Nt_array_ptr<const char>));
-char *strstr(const char *s1 : itype(_Nt_array_ptr<const char>),
+_TLIB char *strstr(const char *s1 : itype(_Nt_array_ptr<const char>),
              const char *s2 : itype(_Nt_array_ptr<const char>)) :
   itype(_Nt_array_ptr<char>);
-char *strtok(char * restrict s1 : itype(restrict _Nt_array_ptr<char>),
+_TLIB char *strtok(char * restrict s1 : itype(restrict _Nt_array_ptr<char>),
              const char * restrict s2 : itype(restrict _Nt_array_ptr<const char>)) :
   itype(_Nt_array_ptr<char>);
 
-char *strerror(int errnum) : itype(_Nt_array_ptr<char>);
-size_t strlen(const char *s : itype(_Nt_array_ptr<const char>));
+_TLIB char *strerror(int errnum) : itype(_Nt_array_ptr<char>);
+_TLIB size_t strlen(const char *s : itype(_Nt_array_ptr<const char>));
 
-char *strdup(const char *s : itype(_Nt_array_ptr<const char>)) : itype(_Nt_array_ptr<char>);
+_TLIB char *strdup(const char *s : itype(_Nt_array_ptr<const char>)) : itype(_Nt_array_ptr<char>);
 
 #include "_builtin_string_checked.h"
 

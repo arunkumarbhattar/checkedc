@@ -11,15 +11,18 @@
 // TODO: Better Support for _FORTIFY_SOURCE > 0                        //
 /////////////////////////////////////////////////////////////////////////
 
+#ifdef __checkcbox
+#pragma CHECKED_SCOPE push
+#pragma CHECKED_SCOPE off
+#endif
+
 #include_next <string.h>
 
 #ifdef __checkcbox
 #pragma CHECKED_SCOPE pop
 #endif
 
-
 #ifdef __checkcbox
-
 #ifndef __STRING_TAINTED_H
 #define __STRING_TAINTED_H
 
@@ -58,8 +61,7 @@
 
 #if _FORTIFY_SOURCE == 0 || !defined(t_memcpy)
 #undef t_memcpy
-_Itype_for_any(T) _TArray_ptr<T> t_memcpy(_TArray_ptr<T> restrict dest : byte_count(n),
-             _TArray_ptr<const T> restrict src : byte_count(n),
+_Itype_for_any(T) _TArray_ptr<T> t_memcpy(_TArray_ptr<T> restrict dest : byte_count(n),_TArray_ptr<const T> restrict src : byte_count(n),
              size_t n) : byte_count(n) ;
 #endif
 

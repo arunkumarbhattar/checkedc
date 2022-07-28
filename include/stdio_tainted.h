@@ -40,9 +40,9 @@ _TPtr<FILE> t_tmpfile(void);
 _TNt_array_ptr<char> t_tmpnam(_TNt_array_ptr<char> source);
 int t_fclose(_TPtr<FILE> stream);
 int t_fflush(_TPtr<FILE> stream);
-_Ptr<FILE> t_fopen(_TNt_array_ptr<const char> restrict filename,
+_TPtr<FILE> t_fopen(_TNt_array_ptr<const char> restrict filename,
             _TNt_array_ptr<const char> restrict mode);
-_Ptr<FILE> t_freopen(_TNt_array_ptr<const char> restrict filename,
+_TPtr<FILE> t_freopen(_TNt_array_ptr<const char> restrict filename,
               _TNt_array_ptr<const char> restrict mode,
               _Ptr<FILE> restrict stream);
 
