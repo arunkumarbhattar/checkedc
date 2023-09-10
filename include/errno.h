@@ -5,7 +5,7 @@
 /////////////////////////////////////////////////////////////////////////
 
 
-#if !defined __checkedc && !defined __checkcbox || defined NO_IMPLICIT_INCLUDE_CHECKED_HDRS
+#if !defined __checkedc || defined NO_IMPLICIT_INCLUDE_CHECKED_HDRS
 
 #ifdef __checkedc
 #pragma CHECKED_SCOPE push
@@ -20,5 +20,4 @@
 
 #else // checkedc && implicit include enabled
 #include <errno_checked.h>
-#include <errno_tainted.h>
 #endif
